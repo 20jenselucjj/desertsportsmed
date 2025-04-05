@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { sendChatbotInquiry } from '../utils/emailService';
+// Import commented out until actually used in the component
+// import { sendChatbotInquiry } from '../utils/emailService';
 
 // Define types for our messages and contact form
 type MessageType = {
@@ -85,7 +86,7 @@ const Chatbot = ({ isInitiallyOpen = false }: ChatbotProps) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
-  const [quickButtons, setQuickButtons] = useState<string[]>([
+  const [quickButtons] = useState<string[]>([
     'Services', 'Pricing', 'Location', 'Hours', 'Book Appointment', 'Contact Us'
   ]);
   const messagesEndRef = useRef<HTMLDivElement>(null);

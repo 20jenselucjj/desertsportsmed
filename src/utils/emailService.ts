@@ -4,14 +4,14 @@ import emailjs from '@emailjs/browser';
 // You'll need to replace this with your actual EmailJS user ID when you sign up
 const initEmailJS = () => {
   // Using a public key for initialization - you should replace this with your actual EmailJS user ID
-  emailjs.init('YOUR_USER_ID'); // Replace with your actual EmailJS user ID when you sign up for EmailJS
+  emailjs.init('YOUR_USER_ID'); // Replace with your actual EmailJS user ID after signing up at EmailJS.com
 };
 
 // Function to send pricing request emails
 export const sendPricingRequest = async (formData: any) => {
   try {
     const response = await emailjs.send(
-      'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+      'YOUR_SERVICE_ID', // Replace with your EmailJS service ID after creating a service
       'YOUR_PRICING_TEMPLATE_ID', // Replace with your template ID for pricing requests
       {
         firstName: formData.firstName,
@@ -34,7 +34,7 @@ export const sendPricingRequest = async (formData: any) => {
 export const sendFreeIntroRequest = async (formData: any) => {
   try {
     const response = await emailjs.send(
-      'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+      'YOUR_SERVICE_ID', // Replace with your EmailJS service ID after creating a service
       'YOUR_FREE_INTRO_TEMPLATE_ID', // Replace with your template ID for free intro requests
       {
         firstName: formData.firstName,
@@ -58,7 +58,7 @@ export const sendFreeIntroRequest = async (formData: any) => {
 export const sendChatbotInquiry = async (formData: any) => {
   try {
     const response = await emailjs.send(
-      'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+      'YOUR_SERVICE_ID', // Replace with your EmailJS service ID after creating a service
       'YOUR_CHATBOT_TEMPLATE_ID', // Replace with your template ID for chatbot inquiries
       {
         name: formData.name,

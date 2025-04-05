@@ -8,8 +8,8 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  // Base path for GitHub Pages - uncomment and update when deploying
-  // base: '/DesertSportsMed/', // Replace with your repository name
+  // Base path for GitHub Pages
+  base: '/desertsportsmed/',
   build: {
     outDir: 'dist',
     // Generate a 404.html file for GitHub Pages client-side routing
