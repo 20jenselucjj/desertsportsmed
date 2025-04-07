@@ -40,7 +40,8 @@ const knowledgeBase = {
     // Booking information
     booking: {
         methods: "You can book an appointment in several ways: Visit our <a href='book-online.html' target='_blank'>Book Online</a> page, call us at (801) 797-4043, or email us at <a href='mailto:desertsportsmed@gmail.com'>desertsportsmed@gmail.com</a>.",
-        online: "Our online booking system allows you to schedule appointments for various services including Initial Evaluation, Therapy Sessions, and Virtual Sessions."
+        online: "Our online booking system allows you to schedule appointments for various services including Initial Evaluation, Therapy Sessions, and Virtual Sessions.",
+        freeIntro: "Start with a <a href='free-intro.html' target='_blank'>Free Intro</a> session to discuss your needs and see if we're a good fit for you. This is a quick strategy call to understand your goals and how we can help."
     },
 
     // Pricing information
@@ -293,12 +294,12 @@ function initChatbot() {
                 "What programs do you offer?",
                 "How can I book an appointment?",
                 "Request pricing information",
-                "Contact you directly"
+                "Book a Free Intro"
             ]);
         }
         else if (message.includes('services') || message.includes('what do you offer')) {
             addBotMessage(knowledgeBase.services.general);
-            addBotMessage("• <a href='performance-therapy.html'>Performance Therapy</a><br>• <a href='sports-performance.html'>Physical Therapy and Rehabilitation</a><br>• <a href='sports-performance.html'>Performance Enhancement</a><br>• <a href='programs.html'>Injury Prevention Programs</a><br>• Manual Therapy<br>• Sports Massage");
+            addBotMessage("• <a href='performance-therapy.html'>Performance Therapy</a><br>• <a href='sports-performance.html'>Physical Therapy and Rehabilitation</a><br>• <a href='sports-performance.html'>Performance Enhancement</a><br>• <a href='performance-therapy.html'>Injury Prevention Programs</a><br>• Manual Therapy<br>• Sports Massage");
             showOptions([
                 "Tell me about Performance Therapy",
                 "Tell me about Physical Therapy",
@@ -343,7 +344,7 @@ function initChatbot() {
         }
         else if (message.includes('programs')) {
             addBotMessage(knowledgeBase.programs.general);
-            addBotMessage("You can learn more about our programs on our <a href='programs.html' target='_blank'>Programs</a> page.");
+            addBotMessage("You can learn more about our programs in the Programs dropdown menu on our website.");
             showOptions([
                 "Tell me about Return to Sport",
                 "What's included in Performance Optimization?",
@@ -375,10 +376,11 @@ function initChatbot() {
                 "Request pricing information"
             ]);
         }
-        else if (message.includes('book') || message.includes('appointment') || message.includes('schedule')) {
+        else if (message.includes('book') || message.includes('appointment') || message.includes('schedule') || message.includes('free intro')) {
             addBotMessage(knowledgeBase.booking.methods);
-            addBotMessage("Would you like me to help you schedule a specific service?");
+            addBotMessage("Would you like me to help you book a specific service?");
             showOptions([
+                "Book a Free Intro",
                 "Book an Initial Evaluation",
                 "Book a Therapy session",
                 "Book a Virtual session",
@@ -388,19 +390,28 @@ function initChatbot() {
         else if (message.includes('view all booking') || message.includes('booking options')) {
             addBotMessage("You can view all our booking options and schedule directly on our booking page:");
             addBotMessage("<a href='book-online.html' target='_blank'>Click here to open our booking page</a>");
-            addBotMessage("Or I can help you schedule a specific type of appointment right here.");
+            addBotMessage("Or I can help you book a specific type of appointment right here.");
             showOptions([
+                "Book a Free Intro",
                 "Book an Initial Evaluation",
                 "Book a Therapy session",
                 "Book a Virtual session"
             ]);
         }
+        else if (message.includes('book a free intro') || message.includes('free intro') || message.includes('strategy call')) {
+            addBotMessage(knowledgeBase.booking.freeIntro);
+            addBotMessage("<a href='free-intro.html' target='_blank'>Click here to book your Free Intro session</a>");
+            showOptions([
+                "What happens during the Free Intro?",
+                "I have more questions"
+            ]);
+        }
         else if (message.includes('book an initial evaluation') || message.includes('initial evaluation') || message.includes('first appointment')) {
             addBotMessage("An Initial Evaluation is the best way to start if you're new to Desert Sports Med. Our specialist will conduct a comprehensive assessment of your condition and create a personalized treatment plan.");
             addBotMessage("<a href='book-online.html' target='_blank'>Click here to book an Initial Evaluation</a>");
-            addBotMessage("Or if you prefer, I can help you contact us directly to schedule.");
+            addBotMessage("Or if you prefer, I can help you contact us directly to book.");
             showOptions([
-                "Contact you directly",
+                "Book a Free Intro",
                 "I have more questions"
             ]);
         }
@@ -410,7 +421,7 @@ function initChatbot() {
             addBotMessage("<a href='book-online.html' target='_blank'>Click here to book a Therapy session</a>");
             showOptions([
                 "What's the difference between these options?",
-                "Contact you directly",
+                "Book a Free Intro",
                 "Request pricing information"
             ]);
         }
@@ -431,17 +442,17 @@ function initChatbot() {
             showOptions([
                 "Book a free consultation",
                 "What if I don't have insurance?",
-                "Contact you directly"
+                "Book a Free Intro"
             ]);
         }
         else if (message.includes('location') || message.includes('address') || message.includes('where')) {
             addBotMessage("Desert Sports Med is located in:");
             addBotMessage(`<a href="https://maps.google.com/?q=${encodeURIComponent(knowledgeBase.contact.address)}" target="_blank">${knowledgeBase.contact.address}</a>`);
-            addBotMessage("We're conveniently located in St. George with plenty of parking available. You can find us on our <a href='contact.html#map' target='_blank'>Contact page</a>.");
+            addBotMessage("We're conveniently located in St. George with plenty of parking available. You can find more information on our <a href='free-intro.html' target='_blank'>Free Intro page</a>.");
             showOptions([
                 "What are your hours?",
                 "How do I get there?",
-                "Book an appointment"
+                "Book a Free Intro"
             ]);
         }
         else if (message.includes('hours') || message.includes('when are you open')) {
@@ -450,11 +461,11 @@ function initChatbot() {
             addBotMessage("We offer early morning and evening appointments to accommodate busy schedules.");
             showOptions([
                 "Book an appointment",
-                "Contact you directly"
+                "Book a Free Intro"
             ]);
         }
         else if (message.includes('contact') || message.includes('talk to someone') || message.includes('speak') || message.includes('contact you directly')) {
-            addBotMessage("You can visit our <a href='contact.html' target='_blank'>Contact page</a> for more ways to reach us, or use this quick form:");
+            addBotMessage("You can visit our <a href='free-intro.html' target='_blank'>Free Intro page</a> to book a free intro session, or use this quick form:");
             showContactForm();
         }
         else if (message.includes('thank')) {
