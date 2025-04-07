@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize smooth scrolling for anchor links
     initSmoothScroll();
+
+    // Initialize programs section animations
+    initProgramsAnimations();
 });
 
 // Header scroll effect
@@ -228,4 +231,64 @@ function showErrorMessage(formId, message) {
     if (!form.querySelector('.error-message')) {
         form.prepend(errorContainer);
     }
+}
+
+// Programs section animations
+function initProgramsAnimations() {
+    const programItems = document.querySelectorAll('.modern-program-item');
+
+    if (programItems.length === 0) return;
+
+    // Reset animations initially
+    programItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+        item.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    });
+
+    // Create intersection observer
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Add delay based on item index
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 200);
+
+                // Unobserve after animation
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    // Observe each program item
+    programItems.forEach(item => {
+        observer.observe(item);
+    });
+
+    // Add hover effects
+    programItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            const img = item.querySelector('img');
+            const number = item.querySelector('.program-number');
+
+            if (img) img.style.transform = 'scale(1.05)';
+            if (number) {
+                number.style.transform = 'translateY(-5px) translateX(-5px)';
+                number.style.boxShadow = '0 10px 20px rgba(0, 0, 0, 0.3)';
+            }
+        });
+
+        item.addEventListener('mouseleave', () => {
+            const img = item.querySelector('img');
+            const number = item.querySelector('.program-number');
+
+            if (img) img.style.transform = 'scale(1)';
+            if (number) {
+                number.style.transform = 'translateY(0) translateX(0)';
+                number.style.boxShadow = 'none';
+            }
+        });
+    });
 }
