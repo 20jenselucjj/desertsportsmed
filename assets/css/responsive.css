@@ -8,6 +8,14 @@
     padding: 0 10px;
   }
 
+  /* Additional adjustments for very small screens */
+  .nav-section {
+    margin-right: 30px; /* Move elements even more to the left on small screens */
+  }
+
+  /* Free intro button and mobile toggle positioning for small screens */
+  /* These styles are overridden by chatbot.css for consistency */
+
   .section {
     padding: 50px 0;
   }
@@ -37,11 +45,8 @@
     grid-template-columns: 1fr;
   }
 
-  .chatbot-container {
-    width: 300px;
-    right: 10px;
-    bottom: 80px;
-  }
+  /* Chatbot positioning is handled in chatbot.css to ensure consistency */
+  /* This ensures the chatbot.css styles take precedence */
 
   .booking-tabs {
     flex-direction: column;
@@ -110,43 +115,6 @@
   /* Styles for extra large devices */
 }
 
-/* iPhone 14 Pro Max specific styles */
-@media only screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3),
-       only screen and (width: 428px) and (height: 926px) {
-  .btn-book-now {
-    display: none; /* Hide the Free Intro button on iPhone 14 Pro Max */
-  }
-
-  .chatbot-toggle {
-    right: 50px; /* Move more to the left (from right edge) */
-    bottom: 15px;
-    left: auto;
-  }
-
-  .chatbot-container {
-    width: 80%;
-    right: 5px;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-    object-fit: contain;
-  }
-
-  .container {
-    overflow-x: hidden;
-    width: 100%;
-    padding: 0 10px;
-  }
-
-  body, html {
-    overflow-x: hidden;
-    width: 100%;
-    position: relative;
-  }
-}
-
 /* Navigation Menu Responsive */
 @media (max-width: 991.98px) {
   .mobile-toggle {
@@ -157,16 +125,33 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-right: 40px; /* Add more padding on the right side to move elements left */
   }
 
   .nav-section {
     display: flex;
     align-items: center;
+    flex-direction: row-reverse; /* Reverse the order of elements */
+    margin-right: 20px; /* Move the entire section more to the left */
   }
 
   .btn-book-now {
-    display: none; /* Hide the Free Intro button on mobile */
+    padding: 8px 15px;
+    font-size: 12px;
+    margin-left: 0; /* Remove left margin */
+    margin-right: 20px; /* Increased spacing between button and toggle */
+    display: inline-block;
+    order: 2; /* Set order to ensure it appears before the mobile toggle */
+    position: relative;
   }
+
+  .mobile-toggle {
+    order: 1; /* Set order to ensure it appears after the free intro button */
+    margin-left: 0; /* Remove any left margin */
+    position: relative;
+  }
+
+  /* For mobile view, positioning is handled in chatbot.css */
 
   .nav-menu {
     position: fixed;
@@ -244,7 +229,7 @@
   }
 
   .nav-menu .dropdown > a:after {
-    display: inline-block;
+    display: block;
     float: right;
     margin-right: 10px;
   }

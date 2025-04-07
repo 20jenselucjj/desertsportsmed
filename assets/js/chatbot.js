@@ -1,16 +1,22 @@
 // Desert Sports Med - Chatbot JavaScript
 
-document.addEventListener('DOMContentLoaded', function() {
-    initChatbot();
+// Check if the chatbot has already been initialized to prevent duplicate initialization
+if (typeof window.chatbotInitialized === 'undefined') {
+    window.chatbotInitialized = true;
 
-    // Show welcome popup after 3 seconds
-    setTimeout(function() {
-        showWelcomePopup();
-    }, 3000);
-});
+    document.addEventListener('DOMContentLoaded', function() {
+        initChatbot();
+
+        // Show welcome popup after 1.5 seconds (reduced from 3 seconds)
+        setTimeout(function() {
+            showWelcomePopup();
+        }, 1500);
+    });
+}
 
 // Chatbot knowledge base - trained on website content
-const knowledgeBase = {
+// Use window object to prevent redeclaration
+window.knowledgeBase = window.knowledgeBase || {
     // Services information
     services: {
         general: "At Desert Sports Med, we offer a variety of sports medicine and rehabilitation services including Sports Injury Assessment and Treatment, Physical Therapy and Rehabilitation, Performance Enhancement, Injury Prevention Programs, Manual Therapy, and Sports Massage.",
@@ -57,21 +63,84 @@ const knowledgeBase = {
     }
 };
 
+// Function to type text with animation
+function typeText(element, text, cursor, index, speed) {
+    if (index < text.length) {
+        // Handle HTML tags (like <strong>)
+        if (text[index] === '<') {
+            // Find the closing bracket
+            const closingIndex = text.indexOf('>', index);
+            if (closingIndex !== -1) {
+                // Add the entire tag at once
+                const tag = text.substring(index, closingIndex + 1);
+                element.innerHTML = element.innerHTML.replace(cursor.outerHTML, '') + tag;
+                element.appendChild(cursor);
+                // Continue typing after the tag
+                setTimeout(() => {
+                    typeText(element, text, cursor, closingIndex + 1, speed);
+                }, 0);
+                return;
+            }
+        }
+
+        // Handle closing tags
+        if (text[index] === '<' && text[index + 1] === '/') {
+            // Find the closing bracket
+            const closingIndex = text.indexOf('>', index);
+            if (closingIndex !== -1) {
+                // Add the entire closing tag at once
+                const tag = text.substring(index, closingIndex + 1);
+                element.innerHTML = element.innerHTML.replace(cursor.outerHTML, '') + tag;
+                element.appendChild(cursor);
+                // Continue typing after the tag
+                setTimeout(() => {
+                    typeText(element, text, cursor, closingIndex + 1, speed);
+                }, 0);
+                return;
+            }
+        }
+
+        // Regular character
+        element.innerHTML = element.innerHTML.replace(cursor.outerHTML, '') + text[index];
+        element.appendChild(cursor);
+
+        // Random typing speed variation for realistic effect
+        const randomSpeed = speed + Math.random() * 50 - 25;
+
+        setTimeout(() => {
+            typeText(element, text, cursor, index + 1, speed);
+        }, randomSpeed);
+    }
+}
+
 // Function to show welcome bubble
 function showWelcomePopup() {
+    // Clear any existing welcome bubble flag to ensure it shows up
+    sessionStorage.removeItem('welcomeBubbleShown');
+
+    // For testing purposes, always show the welcome bubble
+    // In production, you can uncomment the check below
+    /*
     // Check if user has already seen the bubble (using sessionStorage to show once per session)
     if (sessionStorage.getItem('welcomeBubbleShown')) {
         return;
     }
+    */
 
     // Create welcome bubble elements
     const welcomeBubble = document.createElement('div');
     welcomeBubble.className = 'welcome-bubble';
     welcomeBubble.innerHTML = `
         <div class="welcome-bubble-icon"><i class="fas fa-comment-dots"></i></div>
-        <div class="welcome-bubble-content">Hi there, have a question?</div>
+        <div class="welcome-bubble-content"></div>
         <button class="welcome-bubble-close"><i class="fas fa-times"></i></button>
     `;
+
+    // Text to type - define it here so it's available in the entire function scope
+    const textToType = '<strong>Hi there!</strong> Have a question about our services?';
+
+    // Calculate approximate typing time (average 50ms per character plus buffer)
+    const typingTime = textToType.length * 50 + 1000;
 
     // Add bubble to body
     document.body.appendChild(welcomeBubble);
@@ -79,9 +148,22 @@ function showWelcomePopup() {
     // Show bubble with animation
     setTimeout(() => {
         welcomeBubble.classList.add('active');
+
+        // Get the content element for typing animation
+        const contentElement = welcomeBubble.querySelector('.welcome-bubble-content');
+
+        // Add typing cursor
+        const cursor = document.createElement('span');
+        cursor.className = 'typing-cursor';
+        contentElement.appendChild(cursor);
+
+        // Start typing animation after bubble appears
+        setTimeout(() => {
+            typeText(contentElement, textToType, cursor, 0, 50);
+        }, 300);
     }, 100);
 
-    // Auto-hide bubble after 8 seconds
+    // Auto-hide bubble after typing is complete plus 10 seconds for reading
     setTimeout(() => {
         if (welcomeBubble.parentNode) {
             welcomeBubble.classList.remove('active');
@@ -91,7 +173,7 @@ function showWelcomePopup() {
                 }
             }, 300);
         }
-    }, 8000);
+    }, typingTime + 10000);
 
     // Close bubble event
     const closeBtn = welcomeBubble.querySelector('.welcome-bubble-close');
@@ -298,7 +380,7 @@ function initChatbot() {
             ]);
         }
         else if (message.includes('services') || message.includes('what do you offer')) {
-            addBotMessage(knowledgeBase.services.general);
+            addBotMessage(window.knowledgeBase.services.general);
             addBotMessage("• <a href='performance-therapy.html'>Performance Therapy</a><br>• <a href='sports-performance.html'>Physical Therapy and Rehabilitation</a><br>• <a href='sports-performance.html'>Performance Enhancement</a><br>• <a href='performance-therapy.html'>Injury Prevention Programs</a><br>• Manual Therapy<br>• Sports Massage");
             showOptions([
                 "Tell me about Performance Therapy",
@@ -309,7 +391,7 @@ function initChatbot() {
             ]);
         }
         else if (message.includes('performance therapy')) {
-            addBotMessage(knowledgeBase.services.performanceTherapy);
+            addBotMessage(window.knowledgeBase.services.performanceTherapy);
             showOptions([
                 "How is this different from regular PT?",
                 "Book a Performance Therapy session",
@@ -317,7 +399,7 @@ function initChatbot() {
             ]);
         }
         else if (message.includes('physical therapy') || message.includes('rehab') || message.includes('rehabilitation')) {
-            addBotMessage(knowledgeBase.services.physicalTherapy);
+            addBotMessage(window.knowledgeBase.services.physicalTherapy);
             showOptions([
                 "How long does rehabilitation take?",
                 "Do I need a referral?",
@@ -326,7 +408,7 @@ function initChatbot() {
             ]);
         }
         else if (message.includes('injury rehabilitation')) {
-            addBotMessage(knowledgeBase.services.injuryRehabilitation);
+            addBotMessage(window.knowledgeBase.services.injuryRehabilitation);
             showOptions([
                 "Tell me about your Return to Sport program",
                 "Book an injury assessment",
@@ -334,7 +416,7 @@ function initChatbot() {
             ]);
         }
         else if (message.includes('performance') || message.includes('enhancement')) {
-            addBotMessage(knowledgeBase.services.performanceEnhancement);
+            addBotMessage(window.knowledgeBase.services.performanceEnhancement);
             showOptions([
                 "Is this for professional athletes only?",
                 "How do I get started?",
@@ -343,7 +425,7 @@ function initChatbot() {
             ]);
         }
         else if (message.includes('programs')) {
-            addBotMessage(knowledgeBase.programs.general);
+            addBotMessage(window.knowledgeBase.programs.general);
             addBotMessage("You can learn more about our programs in the Programs dropdown menu on our website.");
             showOptions([
                 "Tell me about Return to Sport",
@@ -353,7 +435,7 @@ function initChatbot() {
             ]);
         }
         else if (message.includes('return to sport')) {
-            addBotMessage(knowledgeBase.programs.returnToSport);
+            addBotMessage(window.knowledgeBase.programs.returnToSport);
             showOptions([
                 "How long does it take?",
                 "Book a Return to Sport consultation",
@@ -361,7 +443,7 @@ function initChatbot() {
             ]);
         }
         else if (message.includes('performance optimization')) {
-            addBotMessage(knowledgeBase.programs.performanceOptimization);
+            addBotMessage(window.knowledgeBase.programs.performanceOptimization);
             showOptions([
                 "What sports do you work with?",
                 "Book a performance assessment",
@@ -369,7 +451,7 @@ function initChatbot() {
             ]);
         }
         else if (message.includes('injury prevention')) {
-            addBotMessage(knowledgeBase.programs.injuryPrevention);
+            addBotMessage(window.knowledgeBase.programs.injuryPrevention);
             showOptions([
                 "Is this covered by insurance?",
                 "Book an injury prevention assessment",
@@ -377,7 +459,7 @@ function initChatbot() {
             ]);
         }
         else if (message.includes('book') || message.includes('appointment') || message.includes('schedule') || message.includes('free intro')) {
-            addBotMessage(knowledgeBase.booking.methods);
+            addBotMessage(window.knowledgeBase.booking.methods);
             addBotMessage("Would you like me to help you book a specific service?");
             showOptions([
                 "Book a Free Intro",
@@ -399,7 +481,7 @@ function initChatbot() {
             ]);
         }
         else if (message.includes('book a free intro') || message.includes('free intro') || message.includes('strategy call')) {
-            addBotMessage(knowledgeBase.booking.freeIntro);
+            addBotMessage(window.knowledgeBase.booking.freeIntro);
             addBotMessage("<a href='free-intro.html' target='_blank'>Click here to book your Free Intro session</a>");
             showOptions([
                 "What happens during the Free Intro?",
@@ -438,7 +520,7 @@ function initChatbot() {
             showPricingRequestForm();
         }
         else if (message.includes('insurance')) {
-            addBotMessage(knowledgeBase.pricing.insurance);
+            addBotMessage(window.knowledgeBase.pricing.insurance);
             showOptions([
                 "Book a free consultation",
                 "What if I don't have insurance?",
@@ -447,7 +529,7 @@ function initChatbot() {
         }
         else if (message.includes('location') || message.includes('address') || message.includes('where')) {
             addBotMessage("Desert Sports Med is located in:");
-            addBotMessage(`<a href="https://maps.google.com/?q=${encodeURIComponent(knowledgeBase.contact.address)}" target="_blank">${knowledgeBase.contact.address}</a>`);
+            addBotMessage(`<a href="https://maps.google.com/?q=${encodeURIComponent(window.knowledgeBase.contact.address)}" target="_blank">${window.knowledgeBase.contact.address}</a>`);
             addBotMessage("We're conveniently located in St. George with plenty of parking available. You can find more information on our <a href='free-intro.html' target='_blank'>Free Intro page</a>.");
             showOptions([
                 "What are your hours?",
@@ -457,7 +539,7 @@ function initChatbot() {
         }
         else if (message.includes('hours') || message.includes('when are you open')) {
             addBotMessage("Our hours of operation are:");
-            addBotMessage(knowledgeBase.contact.hours.replace(/\n/g, '<br>'));
+            addBotMessage(window.knowledgeBase.contact.hours.replace(/\n/g, '<br>'));
             addBotMessage("We offer early morning and evening appointments to accommodate busy schedules.");
             showOptions([
                 "Book an appointment",
@@ -565,7 +647,7 @@ function initChatbot() {
     // Function to show contact form
     function showContactForm() {
         addBotMessage("You can contact our team directly through:");
-        addBotMessage(`• Phone: <a href="tel:${knowledgeBase.contact.phone}">${knowledgeBase.contact.phone}</a><br>• Email: <a href="mailto:${knowledgeBase.contact.email}">${knowledgeBase.contact.email}</a><br>• Or fill out this quick form and we'll get back to you:`);
+        addBotMessage(`• Phone: <a href="tel:${window.knowledgeBase.contact.phone}">${window.knowledgeBase.contact.phone}</a><br>• Email: <a href="mailto:${window.knowledgeBase.contact.email}">${window.knowledgeBase.contact.email}</a><br>• Or fill out this quick form and we'll get back to you:`);
 
         const formHTML = `
         <div class="chatbot-form">

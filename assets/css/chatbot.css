@@ -3,7 +3,7 @@
 .chatbot-toggle {
   position: fixed;
   bottom: 30px;
-  right: 30px;
+  right: 30px; /* Default position for desktop */
   width: 60px;
   height: 60px;
   background-color: var(--primary-color);
@@ -217,6 +217,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: #333; /* Ensure text is visible on white background */
 }
 
 .welcome-bubble:before {
@@ -234,18 +235,71 @@
 .welcome-bubble.active {
   opacity: 1;
   transform: translateY(0);
+  animation: popupBubble 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Popup Animation */
+@keyframes popupBubble {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(10px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1) translateY(-5px);
+  }
+  70% {
+    transform: scale(0.95) translateY(2px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
 }
 
 .welcome-bubble-icon {
   margin-right: 10px;
   color: var(--primary-color);
   font-size: 18px;
+  animation: pulseIcon 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseIcon {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .welcome-bubble-content {
   color: #333;
   font-size: 14px;
   margin-right: 10px;
+  min-height: 20px;
+}
+
+/* Typing cursor animation */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 14px;
+  background-color: var(--primary-color);
+  margin-left: 2px;
+  animation: blink 1s infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .welcome-bubble-close {
@@ -258,6 +312,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
+  animation: fadeInClose 0.8s ease 0.5s both;
+}
+
+.welcome-bubble-close:hover {
+  color: #555;
+  transform: rotate(90deg);
+}
+
+@keyframes fadeInClose {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Chatbot Forms */
@@ -322,40 +392,47 @@
 .chatbot-form-submit:hover {
   background-color: var(--secondary-color);
 }
-
 /* Responsive Styles */
 @media (max-width: 576px) {
+  /* Use !important to ensure these styles take precedence */
   .chatbot-toggle {
-    right: 50px; /* Move more to the left (from right edge) */
-    bottom: 20px;
-    width: 50px;
-    height: 50px;
-    left: auto;
+    right: 70px !important; /* Position from the right */
+    left: auto !important; /* Keep left positioning as auto */
+    bottom: 130px !important; /* Move higher up on the screen */
   }
 
-  .chatbot-toggle i {
-    font-size: 20px;
+  /* Ensure consistent positioning of free intro button and mobile toggle */
+  .btn-book-now {
+    right: 15px !important; /* Match the home page positioning */
+    margin-right: 25px !important; /* Consistent spacing */
+  }
+
+  .mobile-toggle {
+    right: 15px !important; /* Match the home page positioning */
   }
 
   .chatbot-container {
-    width: 85%;
-    max-width: 300px;
-    right: 10px;
-    bottom: 80px;
-    left: auto;
-    height: 450px;
+    width: 300px !important;
+    right: auto !important; /* Remove right positioning */
+    left: 10px !important; /* Position from the left instead */
+    bottom: 150px !important; /* Adjust to match new toggle position */
   }
 
   .welcome-bubble {
-    right: 50px; /* Match the chatbot toggle position */
-    bottom: 80px;
-    max-width: 180px;
-    padding: 10px 15px;
-    font-size: 13px;
-    left: auto;
+    right: 70px !important; /* Match the chatbot toggle position */
+    left: auto !important;
+    bottom: 200px !important; /* Position above the chatbot toggle */
+    max-width: 180px !important;
+    padding: 10px 15px !important;
+    font-size: 13px !important;
   }
 
-  .chatbot-messages {
-    height: 330px;
+  /* Important: These styles ensure consistent positioning across all pages */
+  /* Do not modify these values without updating all related elements */
+
+  /* Adjust the welcome bubble arrow to point to the chatbot toggle */
+  .welcome-bubble:before {
+    right: 25px !important; /* Center the arrow relative to the chatbot toggle */
+    left: auto !important;
   }
 }
