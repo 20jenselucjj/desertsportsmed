@@ -42,6 +42,19 @@
     right: 10px;
     bottom: 80px;
   }
+
+  .booking-tabs {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .booking-tab {
+    min-width: 100%;
+  }
+
+  .cal-embed-container {
+    height: 600px;
+  }
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -61,6 +74,18 @@
 
   .booking-container {
     grid-template-columns: 1fr;
+  }
+
+  .booking-tabs {
+    flex-wrap: wrap;
+  }
+
+  .booking-tab {
+    min-width: 45%;
+  }
+
+  .cal-embed-container {
+    height: 650px;
   }
 }
 
@@ -239,5 +264,13 @@
 
   .footer-container {
     grid-template-columns: 1fr;
+  }
+
+  .booking-tab h3 {
+    font-size: 1rem;
+  }
+
+  .booking-tab p {
+    font-size: 0.8rem;
   }
 }

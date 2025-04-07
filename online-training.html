@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Training | Desert Sports Med</title>
+    <meta name="description" content="Our Online Training program provides personalized workout plans, expert coaching, and ongoing support, all delivered remotely to fit your schedule and lifestyle.">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="Logo.png" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/chatbot.css">
+
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="Logo.png" alt="Desert Sports Med Logo">
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="dropdown">
+                        <a href="#">Programs</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="performance-therapy.html">Performance Therapy</a></li>
+                            <li><a href="sports-performance.html">Sports Performance</a></li>
+                            <li><a href="semi-private-training.html">Semi-Private Training</a></li>
+                            <li><a href="online-training.html">Online Training</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="pricing-request.html">Pricing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+
+                <a href="book-online.html" class="btn btn-book-now">BOOK NOW</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header" style="background-image: url('https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80');">
+        <div class="container">
+            <h1>Online Training</h1>
+            <p>Expert coaching and personalized programs delivered remotely to fit your lifestyle</p>
+        </div>
+    </section>
+
+    <!-- Program Overview Section -->
+    <section class="section">
+        <div class="container">
+            <div class="program-overview">
+                <div class="program-overview-content">
+                    <h2>Professional Coaching, Anywhere You Are</h2>
+                    <p>Our Online Training program brings the expertise of Desert Sports Med's coaches directly to you, no matter where you are. We combine personalized programming, video coaching, and ongoing support to deliver a comprehensive training experience that fits your schedule and lifestyle.</p>
+                    <p>Unlike generic workout apps or one-size-fits-all online programs, our approach is fully customized to your specific goals, needs, and available equipment. We take the time to understand your unique situation and create a program that works for you, whether you're training at home, in a hotel gym, or at a commercial facility.</p>
+                    <p>With our Online Training program, you'll receive the same level of expertise and personalization as our in-person clients, with the added flexibility of training on your own schedule. It's perfect for busy professionals, frequent travelers, or anyone who prefers the convenience of training on their own terms.</p>
+
+                    <div class="program-highlights">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-laptop"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h3>Personalized Programming</h3>
+                                <p>Receive customized workout plans designed specifically for your goals, available equipment, and schedule.</p>
+                            </div>
+                        </div>
+
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h3>Video Coaching</h3>
+                                <p>Get detailed video demonstrations of exercises and regular form checks to ensure proper technique.</p>
+                            </div>
+                        </div>
+
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="highlight-content">
+                                <h3>Ongoing Support</h3>
+                                <p>Stay connected with your coach through regular check-ins, progress updates, and unlimited messaging support.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="program-overview-image">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Online Training Session">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section light-bg">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+            </div>
+
+            <div class="how-it-works">
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Initial Consultation</h3>
+                            <p>We begin with a comprehensive video consultation to understand your goals, training history, available equipment, schedule, and any limitations or injuries. This allows us to create a program that's perfectly tailored to your needs.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Movement Assessment</h3>
+                            <p>Through video analysis, we assess your movement patterns and exercise technique to identify any areas that need attention. This helps us design a program that addresses your specific needs and ensures safe, effective training.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Program Design</h3>
+                            <p>Based on your assessment and goals, we create a personalized training program delivered through our easy-to-use app. Your program includes detailed exercise descriptions, video demonstrations, and specific sets, reps, and loading parameters.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Regular Check-ins</h3>
+                            <p>You'll have regular video check-ins with your coach to review your progress, address any questions or concerns, and make adjustments to your program as needed. These sessions ensure you stay on track and continue making progress.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-item">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h3>Ongoing Support</h3>
+                            <p>Between check-ins, you'll have unlimited messaging access to your coach through our app. Whether you have questions about exercises, need to adjust your program due to schedule changes, or want feedback on your form, we're here to help.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Program Features</h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Customized Workout Plans</h3>
+                    <p>Receive personalized training programs designed specifically for your goals, available equipment, and schedule. Your program will be updated regularly based on your progress and feedback.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>User-Friendly App</h3>
+                    <p>Access your workouts, track your progress, and communicate with your coach through our intuitive, easy-to-use mobile app. Available for both iOS and Android devices.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Exercise Video Library</h3>
+                    <p>Learn proper technique with access to our extensive library of exercise demonstration videos, ensuring you perform each movement safely and effectively.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your progress with detailed tracking of workouts, measurements, and performance metrics. Visualize your improvements over time to stay motivated.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Flexible Scheduling</h3>
+                    <p>Train on your own schedule with workouts designed to fit your lifestyle and time constraints. No need to adhere to specific class times or appointment slots.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Nutrition Guidance</h3>
+                    <p>Receive basic nutrition recommendations to support your training goals, including meal timing, portion control, and food quality guidelines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who It's For Section -->
+    <section class="section light-bg">
+        <div class="container">
+            <div class="section-title">
+                <h2>Who It's For</h2>
+            </div>
+
+            <div class="for-whom-content">
+                <div class="for-whom-grid">
+                    <div class="for-whom-card">
+                        <div class="for-whom-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Busy Professionals</h3>
+                        <p>Individuals with demanding schedules who need the flexibility to train when and where it's convenient for them.</p>
+                    </div>
+
+                    <div class="for-whom-card">
+                        <div class="for-whom-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <h3>Frequent Travelers</h3>
+                        <p>People who travel regularly for work or pleasure and need workouts that can be adapted to different environments and equipment availability.</p>
+                    </div>
+
+                    <div class="for-whom-card">
+                        <div class="for-whom-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Home Gym Enthusiasts</h3>
+                        <p>Those who prefer to train at home and want expert guidance to maximize their results with the equipment they have available.</p>
+                    </div>
+
+                    <div class="for-whom-card">
+                        <div class="for-whom-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Remote Clients</h3>
+                        <p>Individuals who don't live near our physical location but want to benefit from our expertise and coaching methodology.</p>
+                    </div>
+                </div>
+
+                <div class="for-whom-note">
+                    <p>Our Online Training program is suitable for individuals of various fitness levels, from beginners to advanced. The key requirement is a commitment to following your program consistently and communicating regularly with your coach.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Clients Say</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"As someone who travels frequently for work, the Online Training program has been a game-changer. I can maintain my fitness routine no matter where I am, and the personalized programming ensures I'm making progress even with limited equipment. The regular check-ins keep me accountable and motivated."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/44.jpg" alt="David R.">
+                        <div class="author-info">
+                            <h4>David R.</h4>
+                            <p>Sales Executive</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"I was skeptical about online coaching at first, but the team at Desert Sports Med has exceeded my expectations. The program is truly personalized, the app is intuitive, and the support is outstanding. I've made more progress in three months of online training than I did in a year of trying to figure things out on my own."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Lisa M.">
+                        <div class="author-info">
+                            <h4>Lisa M.</h4>
+                            <p>Working Mom</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The flexibility of the Online Training program has been perfect for my unpredictable schedule. I can train when it works for me, but still get the expert guidance and accountability I need. The video form checks have been invaluable in improving my technique, and I love being able to message my coach whenever I have questions."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/28.jpg" alt="Michael T.">
+                        <div class="author-info">
+                            <h4>Michael T.</h4>
+                            <p>Healthcare Professional</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container">
+            <h2>Ready to Start Your Online Training Journey?</h2>
+            <p>Get expert coaching and personalized programming that fits your schedule and lifestyle, no matter where you are.</p>
+            <div class="cta-buttons">
+                <a href="book-online.html" class="btn">Schedule a Consultation</a>
+                <a href="pricing-request.html" class="btn btn-secondary">Request Pricing</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="Logo.png" alt="Desert Sports Med Logo">
+                    </div>
+                    <p>Desert Sports Med provides expert sports medicine and rehabilitation services in St. George, Utah. We help athletes and active individuals recover from injuries, enhance performance, and prevent future problems.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/desertsportsmed/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram page"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="pricing-request.html">Pricing</a></li>
+                        <li><a href="book-online.html">Book Online</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="performance-therapy.html">Performance Therapy</a></li>
+                        <li><a href="sports-performance.html">Sports Performance</a></li>
+                        <li><a href="semi-private-training.html">Semi-Private Training</a></li>
+                        <li><a href="online-training.html">Online Training</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Sports Medicine Way, St. George, UT 84770</p>
+                    <p><i class="fas fa-phone"></i> (801) 797-4043</p>
+                    <p><i class="fas fa-envelope"></i> desertsportsmed@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 7am-7pm, Sat: 8am-2pm</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Desert Sports Med. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-toggle">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <div class="chatbot-container">
+        <div class="chatbot-header">
+            <h3>Desert Sports Med Assistant</h3>
+            <div class="chatbot-close">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="chatbot-messages"></div>
+        <div class="chatbot-input">
+            <input type="text" placeholder="Type your message...">
+            <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+    <script src="assets/js/emailjs.js"></script>
+</body>
+</html>

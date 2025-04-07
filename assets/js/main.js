@@ -48,6 +48,7 @@ function initMobileMenu() {
                     dropdowns.forEach(dropdown => {
                         const link = dropdown.querySelector('a');
                         const submenu = dropdown.querySelector('.dropdown-menu');
+                        const dropdownItems = submenu.querySelectorAll('a');
 
                         // Remove existing event listeners first
                         link.removeEventListener('click', toggleDropdown);
@@ -57,9 +58,19 @@ function initMobileMenu() {
 
                         function toggleDropdown(event) {
                             event.preventDefault();
+                            event.stopPropagation(); // Prevent event from bubbling up
                             submenu.classList.toggle('show');
                             dropdown.classList.toggle('active');
                         }
+
+                        // Make sure dropdown menu items are clickable
+                        dropdownItems.forEach(item => {
+                            item.addEventListener('click', function(e) {
+                                // Allow the link to work normally
+                                // The menu will be closed by the navLinks event listener
+                                e.stopPropagation();
+                            });
+                        });
                     });
                 } else {
                     // Remove mobile event listeners when on desktop
@@ -90,7 +101,15 @@ function initMobileMenu() {
         // Close menu when clicking on a menu item (for mobile)
         const navLinks = document.querySelectorAll('.nav-menu a');
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function(event) {
+                // Don't close menu if this is a dropdown toggle
+                if (link.parentElement.classList.contains('dropdown') &&
+                    !link.closest('.dropdown-menu')) {
+                    // This is a dropdown parent link, don't close the menu
+                    return;
+                }
+
+                // Close menu for regular links and dropdown menu items
                 if (window.innerWidth < 992) {
                     navMenu.classList.remove('active');
                     document.body.classList.remove('menu-open');

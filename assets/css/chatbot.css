@@ -96,6 +96,7 @@
 .message.bot .message-content {
   background-color: #f1f1f1;
   color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .message.user .message-content {
@@ -153,10 +154,14 @@
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 14px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .chatbot-option:hover {
   background-color: #e0e0e0;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 .typing-indicator {
@@ -253,6 +258,69 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Chatbot Forms */
+.chatbot-form {
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.chatbot-form h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.chatbot-form-field {
+  margin-bottom: 10px;
+}
+
+.chatbot-form-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.chatbot-form-field input,
+.chatbot-form-field textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+}
+
+.chatbot-form-field input:focus,
+.chatbot-form-field textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.chatbot-form-submit {
+  background-color: var(--primary-color);
+  color: var(--light-text);
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.chatbot-form-submit:hover {
+  background-color: var(--secondary-color);
 }
 
 /* Responsive Styles */
