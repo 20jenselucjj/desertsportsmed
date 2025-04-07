@@ -9,56 +9,59 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 3000);
 });
 
-// Function to show welcome popup
+// Function to show welcome bubble
 function showWelcomePopup() {
-    // Check if user has already seen the popup (using localStorage)
-    if (localStorage.getItem('welcomePopupShown')) {
+    // Check if user has already seen the bubble (using sessionStorage to show once per session)
+    if (sessionStorage.getItem('welcomeBubbleShown')) {
         return;
     }
 
-    // Create welcome popup elements
-    const welcomePopup = document.createElement('div');
-    welcomePopup.className = 'welcome-popup';
-    welcomePopup.innerHTML = `
-        <div class="welcome-popup-content">
-            <div class="welcome-popup-header">
-                <h3>👋 Welcome to Desert Sports Med!</h3>
-                <button class="welcome-popup-close"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="welcome-popup-body">
-                <p>Need help finding information or have questions about our services?</p>
-                <p>Our virtual assistant is here to help you!</p>
-                <button class="welcome-popup-chat-btn">Chat Now</button>
-            </div>
-        </div>
+    // Create welcome bubble elements
+    const welcomeBubble = document.createElement('div');
+    welcomeBubble.className = 'welcome-bubble';
+    welcomeBubble.innerHTML = `
+        <div class="welcome-bubble-content">Hi there, have a question?</div>
+        <button class="welcome-bubble-close"><i class="fas fa-times"></i></button>
     `;
 
-    // Add popup to body
-    document.body.appendChild(welcomePopup);
+    // Add bubble to body
+    document.body.appendChild(welcomeBubble);
 
-    // Show popup with animation
+    // Show bubble with animation
     setTimeout(() => {
-        welcomePopup.classList.add('active');
+        welcomeBubble.classList.add('active');
     }, 100);
 
-    // Close popup event
-    const closeBtn = welcomePopup.querySelector('.welcome-popup-close');
-    closeBtn.addEventListener('click', () => {
-        welcomePopup.classList.remove('active');
+    // Auto-hide bubble after 8 seconds
+    setTimeout(() => {
+        if (welcomeBubble.parentNode) {
+            welcomeBubble.classList.remove('active');
+            setTimeout(() => {
+                if (welcomeBubble.parentNode) {
+                    welcomeBubble.remove();
+                }
+            }, 300);
+        }
+    }, 8000);
+
+    // Close bubble event
+    const closeBtn = welcomeBubble.querySelector('.welcome-bubble-close');
+    closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevent bubble click event
+        welcomeBubble.classList.remove('active');
         setTimeout(() => {
-            welcomePopup.remove();
+            welcomeBubble.remove();
         }, 300);
 
-        // Set flag in localStorage
-        localStorage.setItem('welcomePopupShown', 'true');
+        // Set flag in sessionStorage
+        sessionStorage.setItem('welcomeBubbleShown', 'true');
     });
 
-    // Chat now button event
-    const chatBtn = welcomePopup.querySelector('.welcome-popup-chat-btn');
-    chatBtn.addEventListener('click', () => {
-        welcomePopup.classList.remove('active');
+    // Click on bubble to open chatbot
+    welcomeBubble.addEventListener('click', () => {
+        welcomeBubble.classList.remove('active');
         setTimeout(() => {
-            welcomePopup.remove();
+            welcomeBubble.remove();
         }, 300);
 
         // Open chatbot
@@ -84,8 +87,8 @@ function showWelcomePopup() {
             }
         }
 
-        // Set flag in localStorage
-        localStorage.setItem('welcomePopupShown', 'true');
+        // Set flag in sessionStorage
+        sessionStorage.setItem('welcomeBubbleShown', 'true');
     });
 }
 
