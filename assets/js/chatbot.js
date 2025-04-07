@@ -20,6 +20,7 @@ function showWelcomePopup() {
     const welcomeBubble = document.createElement('div');
     welcomeBubble.className = 'welcome-bubble';
     welcomeBubble.innerHTML = `
+        <div class="welcome-bubble-icon"><i class="fas fa-comment-dots"></i></div>
         <div class="welcome-bubble-content">Hi there, have a question?</div>
         <button class="welcome-bubble-close"><i class="fas fa-times"></i></button>
     `;
