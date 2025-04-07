@@ -38,6 +38,7 @@ function initMobileMenu() {
     if (mobileToggle && navMenu) {
         mobileToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
+            mobileToggle.classList.toggle('active'); // Toggle active class for animation
             document.body.classList.toggle('menu-open');
         });
 
@@ -96,6 +97,7 @@ function initMobileMenu() {
             if (!event.target.closest('.nav-menu') && !event.target.closest('.mobile-toggle')) {
                 if (navMenu.classList.contains('active')) {
                     navMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active'); // Remove active class for animation
                     document.body.classList.remove('menu-open');
                 }
             }
@@ -115,11 +117,50 @@ function initMobileMenu() {
                 // Close menu for regular links and dropdown menu items
                 if (window.innerWidth < 992) {
                     navMenu.classList.remove('active');
+                    mobileToggle.classList.remove('active'); // Remove active class for animation
                     document.body.classList.remove('menu-open');
                 }
             });
         });
+
+        // Initialize hamburger icon structure
+        initHamburgerIcon();
     }
+}
+
+// Initialize hamburger icon structure
+function initHamburgerIcon() {
+    const mobileToggles = document.querySelectorAll('.mobile-toggle');
+
+    mobileToggles.forEach(toggle => {
+        // Make sure we have the right icon
+        const icon = toggle.querySelector('i');
+        if (icon) {
+            // Ensure the icon is using the bars class
+            icon.className = 'fas fa-bars';
+
+            // Add click event to toggle between bars and times icons
+            toggle.addEventListener('click', function() {
+                if (icon.classList.contains('fa-bars')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
+
+        // Add event listeners to close menu and reset icon
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.nav-menu') && !event.target.closest('.mobile-toggle')) {
+                if (icon && icon.classList.contains('fa-times')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+    });
 }
 
 // Smooth scrolling for anchor links

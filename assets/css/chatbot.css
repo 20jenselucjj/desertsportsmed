@@ -407,7 +407,7 @@
   /* Ensure consistent positioning of free intro button and mobile toggle */
   .btn-book-now {
     right: 20px !important; /* Match positioning across all pages */
-    margin-right: 40px !important; /* Reduced spacing from mobile toggle */
+    margin-right: 60px !important; /* Increased spacing from mobile toggle */
     z-index: 1001 !important; /* Ensure it's above other elements */
     position: absolute !important; /* Ensure absolute positioning */
   }
