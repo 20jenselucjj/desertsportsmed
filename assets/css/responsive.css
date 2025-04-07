@@ -1,0 +1,243 @@
+/* Desert Sports Med - Responsive Stylesheet */
+
+/* ===== MEDIA QUERIES ===== */
+
+/* Extra small devices (phones, 576px and down) */
+@media (max-width: 576px) {
+  .container {
+    padding: 0 10px;
+  }
+
+  .section {
+    padding: 50px 0;
+  }
+
+  .section-title h2 {
+    font-size: 28px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .about-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-container {
+    grid-template-columns: 1fr;
+  }
+
+  .chatbot-container {
+    width: 300px;
+    right: 10px;
+    bottom: 80px;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .about-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .hero-content h1 {
+    font-size: 42px;
+  }
+
+  .booking-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  /* Styles for large devices */
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  /* Styles for extra large devices */
+}
+
+/* Navigation Menu Responsive */
+@media (max-width: 991.98px) {
+  .mobile-toggle {
+    display: block;
+  }
+
+  .header-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-section {
+    display: flex;
+    align-items: center;
+  }
+
+  .btn-book-now {
+    padding: 8px 15px;
+    font-size: 12px;
+    margin-left: 10px;
+    display: inline-block;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 80px;
+    left: -100%;
+    width: 80%;
+    height: calc(100vh - 80px);
+    background-color: var(--card-background);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+    overflow-y: auto;
+    margin-top: 0;
+    z-index: 1000;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-menu li {
+    margin: 5px 0;
+    width: 100%;
+  }
+
+  .nav-menu a {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+  }
+
+  .nav-menu a:after {
+    display: none;
+  }
+
+  /* Mobile Dropdown Styles */
+  .nav-menu .dropdown-menu {
+    position: static;
+    width: 100%;
+    opacity: 1;
+    visibility: hidden;
+    display: none;
+    transform: none;
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    border-top: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav-menu .dropdown-menu.show {
+    visibility: visible;
+    display: block;
+    max-height: 500px;
+    padding: 5px 0;
+  }
+
+  .nav-menu .dropdown-menu a {
+    padding-left: 20px;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-menu .dropdown.active > a {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+  }
+
+  .nav-menu .dropdown > a:after {
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+  }
+
+  .nav-menu .dropdown.active > a:after {
+    transform: rotate(180deg);
+  }
+}
+
+/* Grid Layouts Responsive */
+@media (max-width: 767.98px) {
+  .services-grid,
+  .programs-grid,
+  .testimonials-grid,
+  .pricing-container,
+  .team-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .service-detail-image {
+    order: -1;
+    margin-bottom: 30px;
+  }
+
+  .page-header {
+    height: 30vh;
+  }
+
+  .page-header h1 {
+    font-size: 32px;
+  }
+
+  .page-header p {
+    font-size: 16px;
+  }
+
+  .cta-section {
+    padding: 30px 20px;
+  }
+
+  .cta-section .btn {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
