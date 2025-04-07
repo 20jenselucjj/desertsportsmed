@@ -187,7 +187,7 @@
   /* For small mobile screens, adjust spacing */
   @media (max-width: 576px) {
     .btn-book-now {
-      margin-right: 60px !important; /* Increased spacing from mobile toggle */
+      margin-right: 40px !important; /* Reduced spacing for mobile view */
     }
 
     .nav-section {

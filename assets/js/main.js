@@ -134,29 +134,62 @@ function initHamburgerIcon() {
 
     mobileToggles.forEach(toggle => {
         // Make sure we have the right icon
-        const icon = toggle.querySelector('i');
-        if (icon) {
-            // Ensure the icon is using the bars class
-            icon.className = 'fas fa-bars';
+        let icon = toggle.querySelector('i');
 
-            // Add click event to toggle between bars and times icons
-            toggle.addEventListener('click', function() {
-                if (icon.classList.contains('fa-bars')) {
+        // If no icon exists, create one
+        if (!icon) {
+            icon = document.createElement('i');
+            toggle.innerHTML = ''; // Clear any existing content
+            toggle.appendChild(icon);
+        }
+
+        // Ensure the icon is using the bars class
+        icon.className = 'fas fa-bars';
+
+        // Add click event to toggle between bars and times icons with animation
+        toggle.addEventListener('click', function(e) {
+            // Prevent default behavior
+            e.stopPropagation();
+
+            // Toggle the icon
+            if (icon.classList.contains('fa-bars')) {
+                // First remove the icon to reset animation
+                icon.style.display = 'none';
+                setTimeout(() => {
                     icon.classList.remove('fa-bars');
                     icon.classList.add('fa-times');
-                } else {
+                    icon.style.display = 'inline-block';
+                }, 10);
+            } else {
+                // First remove the icon to reset animation
+                icon.style.display = 'none';
+                setTimeout(() => {
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
-                }
-            });
-        }
+                    icon.style.display = 'inline-block';
+                }, 10);
+            }
+        });
 
         // Add event listeners to close menu and reset icon
         document.addEventListener('click', function(event) {
             if (!event.target.closest('.nav-menu') && !event.target.closest('.mobile-toggle')) {
-                if (icon && icon.classList.contains('fa-times')) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
+                const navMenu = document.querySelector('.nav-menu');
+                if (navMenu && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    toggle.classList.remove('active');
+
+                    // Reset icon with animation
+                    if (icon.classList.contains('fa-times')) {
+                        icon.style.display = 'none';
+                        setTimeout(() => {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                            icon.style.display = 'inline-block';
+                        }, 10);
+                    }
+
+                    document.body.classList.remove('menu-open');
                 }
             }
         });
