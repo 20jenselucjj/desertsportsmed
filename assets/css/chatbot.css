@@ -399,7 +399,7 @@
   .chatbot-toggle {
     right: 20px !important; /* Position from the right */
     left: auto !important; /* Keep left positioning as auto */
-    bottom: 130px !important; /* Move higher up on the screen */
+    bottom: 30px !important; /* Lowered position on mobile */
     z-index: 1001 !important; /* Ensure it's above other elements */
     position: fixed !important; /* Ensure fixed positioning */
   }
@@ -407,7 +407,7 @@
   /* Ensure consistent positioning of free intro button and mobile toggle */
   .btn-book-now {
     right: 20px !important; /* Match positioning across all pages */
-    margin-right: 60px !important; /* Consistent spacing from mobile toggle */
+    margin-right: 40px !important; /* Reduced spacing from mobile toggle */
     z-index: 1001 !important; /* Ensure it's above other elements */
     position: absolute !important; /* Ensure absolute positioning */
   }
@@ -421,7 +421,7 @@
   .chatbot-container {
     width: 300px !important;
     right: 20px !important; /* Consistent positioning */
-    bottom: 200px !important; /* Adjust to match new toggle position */
+    bottom: 100px !important; /* Adjust to match new toggle position */
     z-index: 1000 !important; /* Ensure proper stacking */
     position: fixed !important; /* Ensure fixed positioning */
   }
@@ -429,7 +429,7 @@
   .welcome-bubble {
     right: 20px !important; /* Match the chatbot toggle position */
     left: auto !important;
-    bottom: 200px !important; /* Position above the chatbot toggle */
+    bottom: 100px !important; /* Position above the chatbot toggle */
     max-width: 180px !important;
     padding: 10px 15px !important;
     font-size: 13px !important;
