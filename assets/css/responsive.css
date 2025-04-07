@@ -38,9 +38,11 @@
   }
 
   .chatbot-container {
-    width: 300px;
+    width: 90%;
+    max-width: 300px;
     right: 10px;
     bottom: 80px;
+    left: auto;
   }
 
   .booking-tabs {
@@ -110,6 +112,46 @@
   /* Styles for extra large devices */
 }
 
+/* iPhone 14 Pro Max specific styles */
+@media only screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3),
+       only screen and (width: 428px) and (height: 926px) {
+  .btn-book-now {
+    padding: 8px 10px;
+    font-size: 11px;
+    margin-left: 5px;
+    right: 15px;
+    max-width: 90px;
+  }
+
+  .chatbot-toggle {
+    right: 10px;
+    bottom: 15px;
+  }
+
+  .chatbot-container {
+    width: 80%;
+    right: 5px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .container {
+    overflow-x: hidden;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  body, html {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+}
+
 /* Navigation Menu Responsive */
 @media (max-width: 991.98px) {
   .mobile-toggle {
@@ -128,10 +170,15 @@
   }
 
   .btn-book-now {
-    padding: 8px 15px;
-    font-size: 12px;
-    margin-left: 10px;
+    padding: 8px 10px;
+    font-size: 11px;
+    margin-left: 5px;
     display: inline-block;
+    white-space: nowrap;
+    position: relative;
+    right: 10px;
+    max-width: 100px;
+    text-align: center;
   }
 
   .nav-menu {
