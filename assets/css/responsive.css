@@ -5,7 +5,11 @@
 /* Extra small devices (phones, 576px and down) */
 @media (max-width: 576px) {
   .container {
-    padding: 0 10px;
+    padding: 0 15px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
   }
 
   /* Additional adjustments for very small screens */
@@ -14,14 +18,48 @@
   }
 
   /* Free intro button and mobile toggle positioning for small screens */
-  /* These styles are overridden by chatbot.css for consistency */
+  /* These styles are handled in chatbot.css for consistency across all pages */
 
-  .section {
+  .section, section {
     padding: 50px 0;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    margin: 0;
   }
 
   .section-title h2 {
     font-size: 28px;
+  }
+
+  /* Fix hero section in mobile view */
+  .hero {
+    height: auto;
+    min-height: 100vh;
+    width: 100vw;
+    max-width: 100vw;
+    overflow: hidden;
+    padding: 80px 0 40px;
+    margin: 0;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+  }
+
+  .hero .container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    box-sizing: border-box;
   }
 
   .hero-content h1 {
@@ -45,8 +83,8 @@
     grid-template-columns: 1fr;
   }
 
-  /* Chatbot positioning is handled in chatbot.css to ensure consistency */
-  /* This ensures the chatbot.css styles take precedence */
+  /* Chatbot positioning is handled in chatbot.css to ensure consistency across all pages */
+  /* Do not add any positioning styles for chatbot elements here */
 
   .booking-tabs {
     flex-direction: column;
@@ -125,7 +163,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-right: 40px; /* Add more padding on the right side to move elements left */
+    padding: 10px 15px !important; /* Consistent padding across all pages */
+    width: 100% !important; /* Ensure full width */
   }
 
   .nav-section {
@@ -151,7 +190,7 @@
     position: relative;
   }
 
-  /* For mobile view, positioning is handled in chatbot.css */
+  /* For mobile view, positioning is handled in chatbot.css for consistency across all pages */
 
   .nav-menu {
     position: fixed;
@@ -259,16 +298,27 @@
     margin-bottom: 30px;
   }
 
-  .page-header {
-    height: 30vh;
+  .page-header, .page-banner {
+    height: auto;
+    min-height: 30vh;
+    margin-top: 60px;
+    width: 100%;
+    overflow: hidden;
+    padding: 60px 0 30px;
   }
 
-  .page-header h1 {
+  .page-header .container, .page-banner .container {
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  .page-header h1, .page-banner h1 {
     font-size: 32px;
   }
 
-  .page-header p {
+  .page-header p, .page-banner p {
     font-size: 16px;
+    max-width: 100%;
   }
 
   .cta-section {
