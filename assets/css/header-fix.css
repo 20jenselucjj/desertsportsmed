@@ -130,3 +130,10 @@ section, .section {
 .dropdown-menu {
   overflow: visible !important;
 }
+
+/* Ensure mobile toggle is hidden on desktop */
+@media (min-width: 992px) {
+  .mobile-toggle {
+    display: none !important;
+  }
+}

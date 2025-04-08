@@ -146,11 +146,24 @@
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
   /* Styles for large devices */
+  .mobile-toggle {
+    display: none !important; /* Ensure mobile toggle is hidden on desktop */
+  }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
   /* Styles for extra large devices */
+  .mobile-toggle {
+    display: none !important; /* Ensure mobile toggle is hidden on extra large screens */
+  }
+}
+
+/* All desktop screens */
+@media (min-width: 992px) {
+  .mobile-toggle {
+    display: none !important; /* Ensure mobile toggle is hidden on all desktop screens */
+  }
 }
 
 /* Navigation Menu Responsive */

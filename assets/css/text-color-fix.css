@@ -1,0 +1,23 @@
+/* Desert Sports Med - Text Color Fix for Light Background Sections */
+
+/* Fix for "Who's It For" section text color */
+.light-bg .for-whom-card p,
+.light-bg .for-whom-card h3 {
+  color: #ffffff !important; /* White text for better visibility */
+}
+
+/* Fix for "Athlete Success Stories" section text color */
+.light-bg .testimonial-content p,
+.light-bg .testimonial-author p {
+  color: #333333 !important; /* Dark text for light backgrounds */
+}
+
+/* Fix for any other text in light background sections that might be too dark */
+.light-bg .for-whom-note p {
+  color: #ffffff !important;
+}
+
+/* Ensure all paragraph text in light background sections is visible */
+.light-bg p {
+  color: #333333 !important;
+}

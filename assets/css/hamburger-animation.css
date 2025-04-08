@@ -7,10 +7,17 @@
   height: 25px;
   position: relative;
   transition: all 0.3s ease;
-  display: flex;
+  /* Remove display: flex from here as it's overriding the display: none in desktop view */
   align-items: center;
   justify-content: center;
   color: #ffffff !important; /* Ensure icon color is white */
+}
+
+/* Apply display: flex only in mobile view */
+@media (max-width: 991.98px) {
+  .mobile-toggle {
+    display: flex;
+  }
 }
 
 /* Style the default icon */
