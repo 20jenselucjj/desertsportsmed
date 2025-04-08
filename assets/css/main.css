@@ -27,9 +27,13 @@
 @import url('responsive.css');
 @import url('chatbot.css');
 @import url('modern-programs.css');
+@import url('program-dark-theme.css'); /* Modern dark theme for program pages (2025) */
 @import url('header-fix.css');
 @import url('hamburger-animation.css');
 @import url('icon-fix.css');
 @import url('hamburger-animation-fix.css');
 @import url('page-header-fix.css');
 @import url('calendar-fix.css');
+@import url('mobile-toggle-fix.css'); /* Fix for mobile toggle display issues */
+@import url('text-color-fix.css'); /* Fix for text color in light background sections */
+@import url('chatbot-text-fix.css'); /* Fix for chatbot message text color */
